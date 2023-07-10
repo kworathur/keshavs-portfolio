@@ -25,7 +25,7 @@ body.light {
 body.dark {
     --background: #{$dark-bg};
     --text-normal: #{$dark-fg}; // same as dark-fg!
-    --text-title: #{$dark-fg};
+    --text-title: #{#433c3c};
     --text-link: #{$blue3};
     --text-link-hover: #{$blue2};
     --text-background: #{$dark-bg};
