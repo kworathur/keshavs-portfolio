@@ -1,0 +1,39 @@
+/* Universal site styles */
+// https://www.gatsbyjs.com/plugins/gatsby-plugin-dark-mode/
+
+@import "Dark.scss";
+@import "Light.scss";
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.light {
+    --background: #{$light-bg};
+    --text-normal: #{$light-fg};
+    --text-title: #{$light-fg};
+    --text-link: #{$blue3};
+    --text-link-hover: #{$blue2};
+    --text-background: #{$light-bg};
+}
+
+
+body.dark {
+    --background: #{$dark-bg};
+    --text-normal: #{$dark-fg}; // same as dark-fg!
+    --text-title: #{$dark-fg};
+    --text-link: #{$blue3};
+    --text-link-hover: #{$blue2};
+    --text-background: #{$dark-bg};
+}
+
+body {
+    -ms-overflow-style: none;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--background);
+}
+

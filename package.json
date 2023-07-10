@@ -15,10 +15,15 @@
   },
   "dependencies": {
     "@fontsource/montserrat": "^4.5.14",
+    "@types/node": "^20.2.3",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
     "gatsby": "^5.9.1",
+    "gatsby-plugin-dark-mode": "^1.1.2",
     "gatsby-plugin-sass": "^6.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.62.1"
+    "sass": "^1.62.1",
+    "typescript": "^5.0.4"
   }
 }
