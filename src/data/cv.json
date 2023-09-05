@@ -1,35 +1,5 @@
 {
-    "profiles": [
-        {
-            "id": "gh",
-            "title": "GitHub",
-            "network": "github",
-            "username": "michaelfromyeg",
-            "url": "https://github.com/michaelfromyeg"
-        },
-        {
-            "id": "li",
-            "title": "LinkedIn",
-            "network": "linkedin",
-            "username": "michaelfromyeg",
-            "url": "https://linkedin.com/in/michaelfromyeg"
-        },
-        {
-            "id": "so",
-            "title": "Stack Overflow",
-            "network": "stack-overflow",
-            "username": "michael-demarco",
-            "url": "https://stackoverflow.com/users/10660585/michael-demarco"
-        },
-        {
-            "id": "dp",
-            "title": "Devpost",
-            "network": "devpost",
-            "username": "michaelfromyeg",
-            "url": "https://devpost.com/michaelfromyeg"
-        }
-        
-    ],
+    
     "experiences": [
         {
             "id": "uoft-ta",
