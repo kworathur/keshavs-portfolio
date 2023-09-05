@@ -1,0 +1,65 @@
+{
+    "profiles": [
+        {
+            "id": "gh",
+            "title": "GitHub",
+            "network": "github",
+            "username": "michaelfromyeg",
+            "url": "https://github.com/michaelfromyeg"
+        },
+        {
+            "id": "li",
+            "title": "LinkedIn",
+            "network": "linkedin",
+            "username": "michaelfromyeg",
+            "url": "https://linkedin.com/in/michaelfromyeg"
+        },
+        {
+            "id": "so",
+            "title": "Stack Overflow",
+            "network": "stack-overflow",
+            "username": "michael-demarco",
+            "url": "https://stackoverflow.com/users/10660585/michael-demarco"
+        },
+        {
+            "id": "dp",
+            "title": "Devpost",
+            "network": "devpost",
+            "username": "michaelfromyeg",
+            "url": "https://devpost.com/michaelfromyeg"
+        }
+        
+    ],
+    "experiences": [
+        {
+            "id": "uoft-ta",
+            "organization": "University of Toronto",
+            "position": "Undergraduate Teaching Assistant",
+            "location": "Mississauga, ON",
+            "website": "https://cs.ubc.ca",
+            "startDate": "Sep 2023",
+            "endDate": "present",
+            "summary": "Teaching assistant for Operating Systems in Fall 2023.",
+            "highlights": [
+                "Lead weekly labs and hold office hours to support students as they learn topics such as concurrency, process scheduling, memory management, and file systems."
+            ],
+            "technologies": ["GNU/Linux", "C", "git"]
+        }
+    ],
+    
+    "education": [
+        {
+            "id": "uoft",
+            "institution": "University of Toronto",
+            "degree": "B.Sc. Honours Computer Science",
+            "location": "Mississauga, ON",
+            "website": "https://cs.utoronto.ca",
+            "startDate": "Sep 2020",
+            "endDate": "Apr 2024",
+            "gpa": "3.92/4",
+            "courses": [
+                "Operating Systems (95%)"
+            ]
+        }
+    ]
+}
