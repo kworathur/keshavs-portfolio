@@ -5,7 +5,7 @@
             "organization": "University of Toronto",
             "position": "Undergraduate Teaching Assistant",
             "location": "Mississauga, ON",
-            "website": "https://web.utoronto.ca",
+            "website": "https://www.utm.utoronto.ca/math-cs-stats/",
             "startDate": "Sep 2023",
             "endDate": "present",
             "summary": "Teaching assistant for Operating Systems in Fall 2023.",
@@ -22,13 +22,11 @@
             "institution": "University of Toronto",
             "degree": "B.Sc. Honours Computer Science",
             "location": "Mississauga, ON",
-            "website": "https://cs.utoronto.ca",
+            "website": "https://www.utm.utoronto.ca/math-cs-stats/",
             "startDate": "Sep 2020",
             "endDate": "Apr 2024",
             "gpa": "3.92/4",
-            "courses": [
-                "Operating Systems (95%)"
-            ]
+            "courses": []
         }
     ]
 }
