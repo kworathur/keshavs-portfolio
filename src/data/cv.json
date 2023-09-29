@@ -1,12 +1,11 @@
 {
-    
     "experiences": [
         {
             "id": "uoft-ta",
             "organization": "University of Toronto",
             "position": "Undergraduate Teaching Assistant",
             "location": "Mississauga, ON",
-            "website": "https://cs.ubc.ca",
+            "website": "https://web.utoronto.ca",
             "startDate": "Sep 2023",
             "endDate": "present",
             "summary": "Teaching assistant for Operating Systems in Fall 2023.",
