@@ -4,6 +4,9 @@ import { ThemeToggler } from "gatsby-plugin-dark-mode";
 import { Locations } from "../Links/Links";
 
 import * as styles from "./Toggle.module.scss";
+import { Pill } from "react-pill";
+import { icon } from "@fortawesome/fontawesome-svg-core";
+import ToggleSwitch from "./ToggleSwitch";
 
 
 interface ToggleProps {
@@ -22,14 +25,15 @@ interface ThemeTogglerProps {
 const Toggle = (props: ToggleProps): ReactElement => {
     const prefix = props.location === Locations.HOMEPAGE ? "homepage" : "";
 
+
     return (
         <div className={styles[`${prefix}Toggle`]}>
             <ThemeToggler>
                 {({ theme, toggleTheme }: ThemeTogglerProps) => (
                     <label>
-                        <input
+                       <input
                             type="checkbox"
-                            onChange={e => {
+                            onChange={e => {  
                                 toggleTheme(
                                     e.target.checked ? "dark" : "light"
                                 );

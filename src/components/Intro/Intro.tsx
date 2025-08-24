@@ -20,9 +20,9 @@ const Intro = (): ReactElement => {
 
     const bio1 = (
         <p className="redirects-bio">
-            My name is Keshav and I am a {UNIVERSITY_YEAR_AS_STRING}{" "} Honours Computer Science student at <strong>The University of Toronto</strong>. 
+            My name is Keshav and I am a {UNIVERSITY_YEAR_AS_STRING}{" "} master's student in Computer Science at <strong>Georgia Tech</strong>. 
             I enjoy using my experience working in Agile teams and instinct for automation to deliver high-quality software. {"I'm"} also interested in machine learning 
-            and its applications to healthcare. To learn more about my skills and experience, please see my interactive resume below or download a PDF version {resumeLink}.
+            and its applications to healthcare. To learn more about my skills and experience, please click on the resume sections below or download a PDF version {resumeLink}.
         </p>
     );
 

@@ -4,12 +4,13 @@ import { Link } from "gatsby";
 
 import resume from "../../../data/resume.json";
 import cv from "../../../data/cv.json";
+import {projects} from "../../../data/cv.json";
 
 const Projects = (): ReactElement => {
     const projectIds = resume.projects;
-    // const projects = cv.projects.filter((project) => {
-    //     return projectIds.includes(project.id);
-    // })
+    const projects = cv.projects.filter((project) => {
+        return projectIds.includes(project.id);
+    })
 
     return (
         <>
@@ -20,7 +21,7 @@ const Projects = (): ReactElement => {
                 Project reflections can be found in the <Link to="/projects">projects page</Link>.
                 
             </h5>
-            {/* <div className="section">
+            <div className="section">
                 {projects.map((project, i) => {
                     const character = ``;
                     const triggerTitle = (
@@ -47,7 +48,7 @@ const Projects = (): ReactElement => {
                                         return <li key={i}>{bullet}</li>;
                                     })}
                                 </ul>
-                                {/* <div className="techstack">
+                                <div className="techstack">
                                     {proj.technologies.map((tech, i) => {
                                         return (
                                             <div key={i} className="tech">
@@ -60,7 +61,7 @@ const Projects = (): ReactElement => {
                         </Collapsible>
                     );
                 })}
-            </div>  */}
+            </div>  
         </>
     );
 };

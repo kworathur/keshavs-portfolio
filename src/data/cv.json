@@ -15,8 +15,19 @@
             "technologies": ["GNU/Linux", "C", "git"]
         }
     ],
-    
+    "projects": [],
     "education": [
+        {
+            "id": "gatech",
+            "institution": "Georgia Institute of Technology",
+            "degree": "M.S. Computer Science - On Campus",
+            "location": "Atlanta, GA",
+            "website": "https://www.cc.gatech.edu/",
+            "startDate": "Aug 2025",
+            "endDate": "Apr 2027",
+            "gpa": "",
+            "courses": ["Advanced Operating Systems", "Big Data Systems and Analytics"]
+        },
         {
             "id": "uoft",
             "institution": "University of Toronto",

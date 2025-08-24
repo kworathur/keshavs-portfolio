@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { Link } from "gatsby";
-
+import Toggle from "../Toggle/Toggle";
 import * as styles from "./Links.module.scss";
 
 export enum Locations {
@@ -9,16 +9,6 @@ export enum Locations {
 }
 
 export const Destinations = [
-    {
-        name: "Blog",
-    },
-    {
-        name: "Projects",
-    },
-
-    {
-        name: "About",
-    },
 ];
 
 interface InnerLinksProps {
@@ -48,6 +38,7 @@ const InnerLinks = (props: InnerLinksProps): ReactElement => {
                 })}
                 {location !== Locations.HOMEPAGE && <br />}
             </div>
+            <Toggle location={location} />
         </div>
     );
 };

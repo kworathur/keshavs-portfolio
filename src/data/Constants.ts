@@ -28,8 +28,8 @@ const getUniversityYear = (universityId: string): number => {
         throw new Error("Could not find uoft in CV!");
     }
 
-    const sd = DateTime.fromISO("2020-09-01");
-    const ed = DateTime.fromISO("2024-04-30");
+    const sd = DateTime.fromISO("2025-08-18");
+    const ed = DateTime.fromISO("2027-04-30");
 
     const now = DateTime.now();
 
@@ -44,12 +44,6 @@ const getUniversityYear = (universityId: string): number => {
                 return UniversityYear.FIRST;
             case 2:
                 return UniversityYear.SECOND;
-            case 3:
-                return UniversityYear.THIRD;
-            case 4:
-                return UniversityYear.FOURTH;
-            case 5:
-                return UniversityYear.FIFTH;
             default:
                 return UniversityYear.GRADUATED;
         }
@@ -69,7 +63,7 @@ const universityYearToString = (universityYear: number): string => {
         case UniversityYear.FIFTH:
             return "fifth-year";
         case UniversityYear.GRADUATED:
-            throw new Error("Trying to display graduated value!");
+            return 'graduated'
         default:
             throw new Error(
                 `Cannot convert universityYear ${universityYear} to string!`
@@ -77,7 +71,7 @@ const universityYearToString = (universityYear: number): string => {
     }
 };
 
-export const UNIVERSITY_YEAR = getUniversityYear("uoft");
+export const UNIVERSITY_YEAR = getUniversityYear("gatech");
 export const UNIVERSITY_YEAR_AS_STRING = universityYearToString(
     UNIVERSITY_YEAR
 );
