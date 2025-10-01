@@ -1,6 +1,51 @@
 {
     "experiences": [
         {
+            "id": "freedom-qa",
+            "organization" :"Lenovo Testing Center of Excellence (TCOE)",
+            "position": "QA Automation Specialist",
+            "location": "Toronto, ON",
+            "website" : "",
+            "startDate" : "Jul 2024",
+            "endDate" : "Jul 2025",
+            "summary" : "Designed an automation framework that is successfully being used to test purchasing, upgrade, promotions",
+            "highlights" : [
+                "Designed an automation framework using Playwright for end-to-end testing of Freedom Mobile’s (client) wireless consumer applications, reducing QA regression execution time per release by∼80 hours.",
+                "Streamlined the QA process for AWS microservice migration via targeted combinatorial testing, coordinating with non-technical stakeholders (credit analysts) to troubleshoot high-priority defects.",
+                "Trained a team of ten manual testers in Jenkins for automated script execution, enhancing team productivity."
+            ],
+            "technologies" : ["Playwright", "Typescript", "JIRA", "Jenkins"]
+        },
+        {
+            "id" : "g2l-research",
+            "organization" :"Gene2Lead, Limited",
+            "position": "Computational Research Assistant",
+            "location": "Toronto, ON",
+            "website" : "",
+            "startDate" : "Aug 2024",
+            "endDate" : "Jul 2025",
+            "summary" : "Deep learning tooling for a biotechnology startup",
+            "highlights" : [
+                "Constructed optimized data pipelines in PyTorch that expedited feature extraction from terabyte-scale protein data by 32%, accelerating downstream analysis for a research team of medicinal chemists."
+            ],
+            "technologies" : ["PyTorch", "FastAPI", "React"]
+        },
+        {
+            "id" : "simple-it-cloud",
+            "organization" :"Simple IT Firm",
+            "position": "Cloud Developer",
+            "location": "Toronto, ON",
+            "website" : "",
+            "startDate" : "Jan 2024",
+            "endDate" : "Jul 2024",
+            "summary" : "Early stage staartup focused on technology consulting",
+            "highlights" : [
+                "Automated the extraction of information from personal and corporate tax returns using AWS Lambda and Textract, decreasing manual loan review time by 8% and accelerating the overall loan approval workflow.",
+                "Released custom web scraping tools to extract FAQ data from eight company websites and store the data in a vector database for fine tuning AI chatbot applications."
+            ],
+            "technologies" : ["AWS", "FastAPI",  "React"]
+        },
+        {
             "id": "uoft-ta",
             "organization": "University of Toronto",
             "position": "Undergraduate Teaching Assistant",
@@ -15,7 +60,40 @@
             "technologies": ["GNU/Linux", "C", "git"]
         }
     ],
-    "projects": [],
+    "projects": [
+        {
+            "id": "paint-party",
+            "name": "Paint Party",
+            "position": "Software Engineer",
+            "location": "Toronto, ON",
+            "website": "https://kworathur.dev",
+            "github": "https://github.com/kworathur/pixel-party/tree/main",
+            "date": "Nov 2023",
+            "summary": "A scalable, real-time collaborative painting app",
+            "highlights": [
+                "Developed a web application for thousands of users to simultaneously paint pixels of a large canvas, broadcasting updates to all users in real-time using a WebSockets API",
+                "Leveraged AWS serverless services such as Lambda and API Gateway to scale the system to 150k+ users, achieving canvas update latency of less than one second for 95% of users.",
+                "Automated provisioning of networking, storage, and compute resources using a CloudFormation template, reducing time to launch the system by 60%"
+            ],
+            "technologies" : []
+        },
+        {
+            "id": "dl-tumor-classifier",
+            "name": "Deep Learning-Based Brain Tumor Classification",
+            "position": "ML Model Developer",
+            "location": "Toronto, ON",
+            "website": "https://kworathur.dev",
+            "github": "https://github.com/kworathur/CV-Capstone",
+            "date": "Sep 2023",
+            "summary": "A lightweight CNN architecture for brain tumor classification with novel visualizations",
+            "highlights": [
+                "Collaborated with a team of three researchers to develop an automatic tool for brain tumor classification using a custom CNN architecture.",
+                "Engineered a custom data processing pipeline in Tensorflow for processing 2D slices of MRI scans in batches.",
+                "Explored approaches for visualizing the model’s decision-making processes using state-of-the-art techniques such as GradCAM."
+            ],
+            "technologies": []
+        }
+    ],
     "education": [
         {
             "id": "gatech",
@@ -36,8 +114,8 @@
             "website": "https://www.utm.utoronto.ca/math-cs-stats/",
             "startDate": "Sep 2020",
             "endDate": "Apr 2024",
-            "gpa": "3.92/4",
-            "courses": []
+            "gpa": "3.94/4",
+            "courses": ["Machine Learning", "Scalable Computing", "Intro to Databases"]
         }
     ]
 }

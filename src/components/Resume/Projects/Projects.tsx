@@ -17,10 +17,10 @@ const Projects = (): ReactElement => {
             <h2 className="section-title">
                 Projects
             </h2>
-            <h5 className="section-redirect" style={{ fontStyle: "oblique" }}>
+            {/* <h5 className="section-redirect" style={{ fontStyle: "oblique" }}>
                 Project reflections can be found in the <Link to="/projects">projects page</Link>.
                 
-            </h5>
+            </h5> */}
             <div className="section">
                 {projects.map((project, i) => {
                     const character = ``;
@@ -49,7 +49,7 @@ const Projects = (): ReactElement => {
                                     })}
                                 </ul>
                                 <div className="techstack">
-                                    {proj.technologies.map((tech, i) => {
+                                    {project.technologies.map((tech, i) => {
                                         return (
                                             <div key={i} className="tech">
                                                 {tech}

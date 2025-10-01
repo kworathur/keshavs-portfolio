@@ -20,9 +20,9 @@ const Intro = (): ReactElement => {
 
     const bio1 = (
         <p className="redirects-bio">
-            My name is Keshav and I am a {UNIVERSITY_YEAR_AS_STRING}{" "} master's student in Computer Science at <strong>Georgia Tech</strong>. 
-            I enjoy using my experience working in Agile teams and instinct for automation to deliver high-quality software. {"I'm"} also interested in machine learning 
-            and its applications to healthcare. To learn more about my skills and experience, please click on the resume sections below or download a PDF version {resumeLink}.
+            Hi there! {"I'm"} Keshav, a passionate Master's student diving deeper into data engineering and computing systems at Georgia Tech. 
+            
+            Welcome to my interactive resume! To learn more about my skills and experience, please click on the resume sections below, or download a PDF version {resumeLink}. 
         </p>
     );
 
@@ -35,7 +35,6 @@ const Intro = (): ReactElement => {
                 padding: '1rem 2rem'
             }}
         >
-            <StaticImage src='../../../images/headshot.png' layout="constrained" className={styles.headshot} alt="Keshav headshot" />
             {bio1}
             <p className="redirects-bio">
                 If you would like to discuss more about my interests or are looking to add a passionate software developer to your team, please feel free to reach out via email or LinkedIn.  
