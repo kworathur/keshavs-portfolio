@@ -3,14 +3,14 @@
  */
 module.exports = {
   siteMetadata: {
-        title: "kworathur.dev",
+        title: "kworathur.com",
         author: {
             name: "Keshav Worathur",
             summary: `an aspiring systems software engineer completing his master's at the Georgia Institute of Technology in Atlanta, GA.`,
         },
         description:
             "Keshav Worathur's developer portfolio.",
-        siteUrl: "https://kworathur.dev",
+        siteUrl: "https://kworathur.com",
         social: {
             twitter: "kworathur",
         },
