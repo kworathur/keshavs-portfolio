@@ -18,6 +18,7 @@ module.exports = {
   trailingSlash: `never`,
   plugins: [
         `gatsby-plugin-sass`,
+        `gatsby-plugin-image`,
         {
             resolve: "gatsby-plugin-react-svg",
             options: {

@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { Link } from "gatsby";
 import Toggle from "../Toggle/Toggle";
 import * as styles from "./Links.module.scss";
+import { StaticImage } from "gatsby-plugin-image";
 
 export enum Locations {
     HOMEPAGE,
@@ -22,7 +23,7 @@ const InnerLinks = (props: InnerLinksProps): ReactElement => {
     return (
         <div className={styles[`${prefix}Links`]}>
             <Link className={styles.headerLink} to={"/"}>
-                <h1 className={styles[`${prefix}Title`]}><span style={{ "marginRight": 5 }}></span>Keshav Worathur</h1>
+               <StaticImage width={128} height={128} src='../../../content/assets/KVW-monogram.svg' alt='Keshav Worathur' />
             </Link>
             <div className={styles.linksAndLights}>
                 {Destinations.map((d, index) => {

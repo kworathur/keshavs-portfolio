@@ -8,10 +8,14 @@
 }
 
 .homepageLinks {
+    width: 60rem;
+    padding: 1rem 2rem;
+    margin-right: auto;
+    margin-left: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
 }
