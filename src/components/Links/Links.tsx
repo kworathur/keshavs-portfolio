@@ -2,18 +2,28 @@ import React, { ReactElement } from "react";
 import { Link } from "gatsby";
 import Toggle from "../Toggle/Toggle";
 import * as styles from "./Links.module.scss";
-import { StaticImage } from "gatsby-plugin-image";
-
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import {ThemeToggler} from 'gatsby-plugin-dark-mode';
 export enum Locations {
     HOMEPAGE,
     POSTS,
 }
 
 export const Destinations = [
+    // {name: 'Projects'}
 ];
 
 interface InnerLinksProps {
     location: Locations;
+}
+
+type ToggleThemeFn = {
+    (checked: string): void;
+};
+
+export interface ThemeTogglerProps {
+    theme: unknown;
+    toggleTheme: ToggleThemeFn;
 }
 
 const InnerLinks = (props: InnerLinksProps): ReactElement => {
@@ -21,26 +31,35 @@ const InnerLinks = (props: InnerLinksProps): ReactElement => {
     const prefix = location === Locations.HOMEPAGE ? "homepage" : "";
 
     return (
-        <div className={styles[`${prefix}Links`]}>
-            <Link className={styles.headerLink} to={"/"}>
-               <StaticImage width={128} height={128} src='../../../content/assets/KVW-monogram.svg' alt='Keshav Worathur' />
-            </Link>
-            <div className={styles.linksAndLights}>
-                {Destinations.map((d, index) => {
-                        return (
-                            <Link
-                                key={index}
-                                className={styles[`${prefix}Link`]}
-                                to={`/${d.name}`}
-                            >
-                                {d.name}
-                            </Link>
-                        );
-                })}
-                {location !== Locations.HOMEPAGE && <br />}
-            </div>
-            <Toggle location={location} />
-        </div>
+
+            <ThemeToggler>
+                            {({ theme, toggleTheme }: ThemeTogglerProps) => {
+                                const isDarkMode = theme === 'dark';
+                                return (
+                                       <div className={styles[`${prefix}Links`]}>
+                                            <Link className={styles.headerLink} to={"/"}>          
+                                            {isDarkMode ? <StaticImage width={128} height={128} src='../../../content/assets/KVW-monogram-dark.svg' alt='Keshav Worathur' />   : <StaticImage width={128} height={128} src='../../../content/assets/KVW-monogram.svg' alt='Keshav Worathur' />}
+                                        </Link>
+                                        <div className={styles.linksAndLights}>
+                                            {Destinations.map((d, index) => {
+                                                    return (
+                                                        <Link
+                                                            key={index}
+                                                            className={styles[`${prefix}Link`]}
+                                                            to={`/${d.name}`}
+                                                        >
+                                                            {d.name}
+                                                        </Link>
+                                                    );
+                                            })}
+                                            {location !== Locations.HOMEPAGE && <br />}
+                                        </div>
+                                        <Toggle location={location} theme={theme} toggleTheme={toggleTheme}/>
+                                        </div>
+                                )
+                            }}
+            </ThemeToggler>
+
     );
 };
 

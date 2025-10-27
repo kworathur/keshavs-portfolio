@@ -11,7 +11,7 @@ const Socials = (): ReactElement => {
         <div className={styles.wrapper}>
             <a href="https://linkedin.com/in/keshav-w" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedinIn} /></a>
             <a href="https://github.com/kworathur" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
-            <a href="mailto:keshav.worathur@mail.utoronto.ca" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faEnvelope} /></a>
+            <a href="mailto:kworathur3@gatech.edu" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faEnvelope} /></a>
         </div>
     )
 }

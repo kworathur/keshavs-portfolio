@@ -1,7 +1,7 @@
 import React, { useEffect, useState, ReactElement } from "react";
 import { ThemeToggler } from "gatsby-plugin-dark-mode";
 
-import { Locations } from "../Links/Links";
+import { Locations, ThemeTogglerProps } from "../Links/Links";
 
 import * as styles from "./Toggle.module.scss";
 import { Pill } from "react-pill";
@@ -9,27 +9,24 @@ import { icon } from "@fortawesome/fontawesome-svg-core";
 import ToggleSwitch from "./ToggleSwitch";
 
 
-interface ToggleProps {
+interface ToggleProps extends ThemeTogglerProps {
     location: Locations;
+    
 }
 
 type ToggleThemeFn = {
     (checked: string): void;
 };
 
-interface ThemeTogglerProps {
-    theme: unknown;
-    toggleTheme: ToggleThemeFn;
-}
+
 
 const Toggle = (props: ToggleProps): ReactElement => {
     const prefix = props.location === Locations.HOMEPAGE ? "homepage" : "";
 
-
+    const {theme, toggleTheme} = props
     return (
         <div className={styles[`${prefix}Toggle`]}>
-            <ThemeToggler>
-                {({ theme, toggleTheme }: ThemeTogglerProps) => (
+          
                     <label>
                        <input
                             type="checkbox"
@@ -42,8 +39,6 @@ const Toggle = (props: ToggleProps): ReactElement => {
                         />{" "}
                         <span className="toggle-text">Dark Mode</span>
                     </label>
-                )}
-            </ThemeToggler>
         </div>
     );
 };

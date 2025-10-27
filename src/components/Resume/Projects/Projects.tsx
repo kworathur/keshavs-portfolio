@@ -18,8 +18,7 @@ const Projects = (): ReactElement => {
                 Projects
             </h2>
             {/* <h5 className="section-redirect" style={{ fontStyle: "oblique" }}>
-                Project reflections can be found in the <Link to="/projects">projects page</Link>.
-                
+                📽️ You can view demos of the projects below on the <Link to="/projects">projects page</Link>.
             </h5> */}
             <div className="section">
                 {projects.map((project, i) => {

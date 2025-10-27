@@ -37,10 +37,8 @@ const Intro = (): ReactElement => {
         >
             {bio1}
             <p className="redirects-bio">
-                If you would like to discuss more about my interests or are looking to add a passionate software developer to your team, please feel free to reach out via email or LinkedIn.  
+                If you would like to discuss more about my interests or are looking to add a passionate data engineer to your team, please feel free to reach out via email or LinkedIn.  
             </p>
-
-            
         </div>
     );
 };

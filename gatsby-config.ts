@@ -6,7 +6,7 @@ module.exports = {
         title: "kworathur.com",
         author: {
             name: "Keshav Worathur",
-            summary: `an aspiring systems software engineer completing his master's at the Georgia Institute of Technology in Atlanta, GA.`,
+            summary: `an aspiring data engineer completing his master's at the Georgia Institute of Technology in Atlanta, GA.`,
         },
         description:
             "Keshav Worathur's developer portfolio.",
@@ -159,6 +159,7 @@ module.exports = {
             resolve: `gatsby-plugin-typography`,
             options: {
                 pathToConfigModule: `src/utils/typography`,
+            
             },
         },
         // Enable PWA and offline functionality
