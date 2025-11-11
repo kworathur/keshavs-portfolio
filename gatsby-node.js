@@ -43,10 +43,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const posts = response.data.allMarkdownRemark.edges;
 
     // Create blog content, design content, and project content
-    createPagesByType("blog", posts, createPage);
-    createPagesByType("design", posts, createPage);
     createPagesByType("projects", posts, createPage);
-    createPagesByType("travel", posts, createPage);
 };
 
 /**

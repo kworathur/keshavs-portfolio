@@ -30,8 +30,8 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: `${__dirname}/content/blog`,
-                name: `blog`,
+                path: `${__dirname}/content/projects`,
+                name: `projects`,
             },
         },
         {
@@ -69,21 +69,6 @@ module.exports = {
         },
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
-        {
-            resolve: `gatsby-plugin-google-gtag`,
-            options: {
-                trackingIds: ["G-DBLCHKE1M2"],
-                gtagConfig: {
-                    optimize_id: "OPT_CONTAINER_ID",
-                    anonymize_ip: true,
-                    cookie_expires: 0,
-                },
-                pluginConfig: {
-                    head: true,
-                    respectDNT: true,
-                },
-            },
-        },
         {
             resolve: `gatsby-plugin-feed`,
             options: {

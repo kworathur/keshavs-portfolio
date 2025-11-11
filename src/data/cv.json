@@ -8,13 +8,13 @@
             "website" : "",
             "startDate" : "Jul 2024",
             "endDate" : "Jul 2025",
-            "summary" : "Designed an automation framework that is successfully being used to test purchasing, upgrade, promotions",
+            "summary" : "Designed an automation framework that is actively used to test purchasing, upgrade, promotions",
             "highlights" : [
-                "Designed an automation framework using Playwright for end-to-end testing of Freedom Mobile’s (client) wireless consumer applications, reducing QA regression execution time per release by∼80 hours.",
-                "Streamlined the QA process for AWS microservice migration via targeted combinatorial testing, coordinating with non-technical stakeholders (credit analysts) to troubleshoot high-priority defects.",
-                "Trained a team of ten manual testers in Jenkins for automated script execution, enhancing team productivity."
+                "Developed an automation framework using Playwright for end-to-end testing of Freedom Mobile’s wireless consumer applications, reducing QA regression execution time per release by 80 hours and earning a raise within 8 months.",
+                "Trained a team of ten software testers in Jenkins for automated data creation, creating scripts that automated over 100 account creations in under 30 minutes, saving the team over 40 hours of effort.",
+                "Collaborated with the director of DevOps to develop cloud CI/CD pipelines using Bitbucket pipelines and docker containers that trigger Playwright tests every time code is deployed to staging, saving approximately 10 hours per sprint."
             ],
-            "technologies" : ["Playwright", "Typescript", "JIRA", "Jenkins"]
+            "technologies" : ["Playwright", "Typescript", "JIRA", "Jenkins", "CI/CD"]
         },
         {
             "id" : "g2l-research",
@@ -38,7 +38,7 @@
             "website" : "",
             "startDate" : "Jan 2024",
             "endDate" : "Jul 2024",
-            "summary" : "Early stage staartup focused on technology consulting",
+            "summary" : "Early stage startup focused on managed services",
             "highlights" : [
                 "Automated the extraction of information from personal and corporate tax returns using AWS Lambda and Textract, decreasing manual loan review time by 8% and accelerating the overall loan approval workflow.",
                 "Released custom web scraping tools to extract FAQ data from eight company websites and store the data in a vector database for fine tuning AI chatbot applications."
