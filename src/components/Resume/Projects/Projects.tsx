@@ -55,7 +55,8 @@ const Projects = (): ReactElement => {
                                             </div>
                                         );
                                     })}
-                                </div> 
+                                </div>
+                                {project.demo_url && <p>📽️ View a demo of this project <a href={project.demo_url}>here</a>!</p>}
                             </div>
                         </Collapsible>
                     );
