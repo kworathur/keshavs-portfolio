@@ -75,7 +75,7 @@
                 "Leveraged AWS serverless services such as Lambda and API Gateway to scale the system to 150k+ users, achieving canvas update latency of less than one second for 95% of users.",
                 "Automated provisioning of networking, storage, and compute resources using a CloudFormation template, reducing time to launch the system by 60%"
             ],
-            "demo_url" : "https://www.loom.com/share/afe4035b25e14e36aacf4ea6af37dad7",
+            "demo_url" : "https://www.loom.com/share/099c728f2a3e435b8179c1ca1deffe71",
             "technologies" : ["Javascript", "Websockets", "API Gateway", "Elasticache", "DynamoDB"]
         },
         {
