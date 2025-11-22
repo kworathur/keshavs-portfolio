@@ -55,7 +55,9 @@
             "endDate": "present",
             "summary": "Teaching assistant for Operating Systems in Fall 2023.",
             "highlights": [
-                "Lead weekly labs and hold office hours to support students as they learn topics such as concurrency, process scheduling, memory management, and file systems."
+                "Facilitated interactive tutorials for upper-year CS courses (ML, Databases, OS), leveraging deep ML and systems knowledge.",
+                "Developed an automated test suite for marking assignments, resulting in an 8-hour reduction in grading time per TA.",
+                "Promptly answered student questions on course discussion boards, making 300+ contributions." 
             ],
             "technologies": ["GNU/Linux", "C", "git"]
         }
