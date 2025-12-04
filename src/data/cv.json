@@ -18,7 +18,7 @@
         },
         {
             "id" : "g2l-research",
-            "organization" :"Gene2Lead, Limited",
+            "organization" :"Gene2Lead Limited",
             "position": "Computational Research Assistant",
             "location": "Toronto, ON",
             "website" : "",
@@ -26,7 +26,9 @@
             "endDate" : "Jul 2025",
             "summary" : "Deep learning tooling for a biotechnology startup",
             "highlights" : [
-                "Constructed optimized data pipelines in PyTorch that expedited feature extraction from terabyte-scale protein data by 32%, accelerating downstream analysis for a research team of medicinal chemists."
+                "Developed a machine learning pipeline using Python (PyTorch) to analyze the human proteome, enabling researchers to process datasets of up to 7 million protein-drug interactions, accelerating drug discovery.",
+                "Pitched a user-friendly visualization tool developed with React, WebGL, and FastAPI for understanding proteomic data, which led to adoption by 8 Gene2Lead researchers and positive feedback on usability.",
+                "Deployed protein feature extraction, training, inference and reporting pipelines on AWS Sagemaker to facilitate greater visibility into research project progress and data sharing."
             ],
             "technologies" : ["PyTorch", "FastAPI", "React"]
         },
