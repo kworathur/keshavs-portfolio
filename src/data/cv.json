@@ -8,13 +8,13 @@
             "website" : "",
             "startDate" : "Jul 2024",
             "endDate" : "Jul 2025",
-            "summary" : "Designed an automation framework that is actively used to test purchasing, upgrade, promotions",
+            "summary" : "Architected a framework to test tab activations, rate plan changes, home internet subscriptions, credit checks for a large telecom company",
             "highlights" : [
-                "Developed an automation framework using Playwright for end-to-end testing of Freedom Mobile’s wireless consumer applications, reducing QA regression execution time per release by 80 hours and earning a raise within 8 months.",
+                "Developed an automation framework using Typescript for end-to-end testing of Freedom Mobile’s wireless consumer applications, reducing QA regression execution time per release by 80 hours and earning a raise within 8 months.",
                 "Trained a team of ten software testers in Jenkins for automated data creation, creating scripts that automated over 100 account creations in under 30 minutes, saving the team over 40 hours of effort.",
                 "Collaborated with the director of DevOps to develop cloud CI/CD pipelines using Bitbucket pipelines and docker containers that trigger Playwright tests every time code is deployed to staging, saving approximately 10 hours per sprint."
             ],
-            "technologies" : ["Playwright", "Typescript", "JIRA", "Jenkins", "CI/CD"]
+            "technologies" : [ "Typescript", "JIRA", "Jenkins", "CI/CD"]
         },
         {
             "id" : "g2l-research",
