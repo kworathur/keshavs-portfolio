@@ -1,16 +1,17 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import { Link } from "gatsby";
 import Toggle from "../Toggle/Toggle";
 import * as styles from "./Links.module.scss";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import {ThemeToggler} from 'gatsby-plugin-dark-mode';
+
+
 export enum Locations {
     HOMEPAGE,
     POSTS,
 }
 
-export const Destinations = [
-    // {name: 'Projects'}
+export const Destinations = [ 
 ];
 
 interface InnerLinksProps {
@@ -34,11 +35,12 @@ const InnerLinks = (props: InnerLinksProps): ReactElement => {
 
             <ThemeToggler>
                             {({ theme, toggleTheme }: ThemeTogglerProps) => {
+                                console.log(`Display site with theme "${theme}"`)
                                 const isDarkMode = theme === 'dark';
                                 return (
                                        <div className={styles[`${prefix}Links`]}>
                                             <Link className={styles.headerLink} to={"/"}>          
-                                            {isDarkMode ? <StaticImage width={128} height={128} src='../../../content/assets/KVW-monogram-dark.svg' alt='Keshav Worathur' />   : <StaticImage width={128} height={128} src='../../../content/assets/KVW-monogram.svg' alt='Keshav Worathur' />}
+                                            {isDarkMode ? <StaticImage loading="eager" width={128} height={128} src='../../../content/assets/logoDark.svg' alt='Keshav Worathur' />   : <StaticImage loading="eager" width={128} height={128} src='../../../content/assets/logo.svg' alt='Keshav Worathur' />}
                                         </Link>
                                         <div className={styles.linksAndLights}>
                                             {Destinations.map((d, index) => {
