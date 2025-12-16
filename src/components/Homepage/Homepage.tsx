@@ -11,18 +11,19 @@ import Intro from "../Intro/Intro";
 import Footer from "../Footer/Footer"
 
 import { StaticImage } from "gatsby-plugin-image";
+import ToggleSwitch from "../Toggle/ToggleSwitch";
 const Homepage: React.FC = (): ReactElement => {
 
     return (
         <>
+   
             <Links location={Locations.HOMEPAGE} />
             <SEO title="Home" />
             <Intro />
             <div className="resume">
-                <Education />
                 <Experience />
                 <Projects />
-                {/* <Extracurriculars /> */}
+                <Education />
                 <Footer />
         
             </div>

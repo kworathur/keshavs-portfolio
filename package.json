@@ -57,6 +57,7 @@
     "typography-theme-vue": "^0.1.0"
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.11",
     "gatsby-plugin-dark-mode": "^1.1.2"
   }
 }
