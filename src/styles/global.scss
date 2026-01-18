@@ -278,3 +278,9 @@ h4 {
     font-weight: bold;
     color: var(--text-normal);
 }
+
+.gatsby-image-wrapper [data-main-image] {
+    transition: none !important;
+    will-change: unset !important;
+    opacity: 1 !important;
+}

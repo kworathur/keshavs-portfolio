@@ -52,7 +52,7 @@ const PostListTemplate = ({
     return (
         <Format location={location} title={title}>
             <SEO title={type} />
-            
+
             <div className={styles.posts}>
                 {posts.map(({ node }: { node: unknown }, i: number) => {
                     return <PostHeader key={i} type={type} node={node} />;

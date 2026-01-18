@@ -1,10 +1,6 @@
 import React, { ReactElement } from "react";
 import { rhythm } from "../../utils/typography";
 
-import { UNIVERSITY_YEAR_AS_STRING } from "../../data/Constants";
-import { StaticImage } from "gatsby-plugin-image";
-
-import * as styles from './Intro.module.scss'
 
 const Intro = (): ReactElement => {
 
