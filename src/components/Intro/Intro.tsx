@@ -7,7 +7,7 @@ const Intro = (): ReactElement => {
     const resumeLink = (
         <a
             target="_blank"
-            href="https://kworathur-portfolio.s3.amazonaws.com/kw_resume_portfolio.pdf" // TODO: Modify permissions for private access with access keys
+            href="https://uploads.kworathur.com/keshav_worathur_resume.pdf"
             rel="noreferrer"
         >
             here

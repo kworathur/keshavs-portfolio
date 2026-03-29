@@ -2,22 +2,21 @@
     background-color: var(--bg);
     border-radius: 20px;
     height: auto;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px 0 rgb(0 0 0 / 20%);
     margin-bottom: 0;
     margin-top: 0;
     padding-bottom: 0;
 }
 
 .image {
-    background-color: black; /* fallback color */
+    background-color: #000; /* fallback color */
     border-radius: 20px 20px 0 0;
     margin-bottom: 20px;
     height: 150px;
 }
 
 .post .image img {
+    /* stylelint-disable-next-line declaration-no-important -- override Gatsby image plugin transition */
     transition: all 0.3s !important;
     transform: scale(1);
 }
@@ -37,5 +36,6 @@
     font-weight: bold;
     letter-spacing: 2px;
     text-align: right;
+
     // margin: 0;
 }

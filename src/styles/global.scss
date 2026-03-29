@@ -1,14 +1,14 @@
 /* Universal site styles */
 
-@import "Dark.scss";
-@import "Light.scss";
+@import "Dark";
+@import "Light";
 
 @font-face {
     font-family: 'Albertus var';
     font-weight: 100 900;
     font-display: swap;
     font-style: normal;
-    src: url(/fonts/AlbertusMTStd.woff2) format("woff2");
+    src: url("/fonts/AlbertusMTStd.woff2") format("woff2");
 }
 
 * {
@@ -60,9 +60,11 @@ body {
 // <code> override
 code,
 pre {
+    /* stylelint-disable declaration-no-important -- override Prism.js theme defaults */
     color: var(--code) !important;
     text-shadow: none !important;
     background: var(--code-background) !important;
+    /* stylelint-enable declaration-no-important */
 }
 
 hr {
@@ -89,6 +91,17 @@ article {
     margin: 1rem 0;
 }
 
+.shadow {
+    filter: drop-shadow(5px 5px 3px var(--logo-shadow));
+}
+
+.shadow:hover {
+    animation: color-rotate 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
 .logo-text-wrapper:hover > .shadow {
     animation: color-rotate 0.5s;
     animation-iteration-count: infinite;
@@ -101,6 +114,7 @@ article {
     white-space: pre-line;
     text-align: center;
     position: absolute;
+
     /* center text even after writing */
     top: 50%;
     left: 50%;
@@ -115,7 +129,7 @@ article {
 }
 
 // On large screens, adjust display to more appropriately fit screen
-@media only screen and (min-width: 954px) {
+@media only screen and (width >= 954px) {
     .title-text {
         font-size: 3rem;
     }
@@ -125,22 +139,11 @@ article {
     }
 }
 
-.shadow {
-    -webkit-filter: drop-shadow(5px 5px 3px var(--logo-shadow));
-    filter: drop-shadow(5px 5px 3px var(--logo-shadow));
-}
-
-.shadow:hover {
-    animation: color-rotate 0.5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: ease-in-out;
-}
-
 @keyframes color-rotate {
     from {
         filter: drop-shadow(5px 5px 3px var(--color-a));
     }
+
     to {
         filter: drop-shadow(5px 5px 3px var(--color-b));
     }
@@ -152,12 +155,13 @@ article {
 
 .redirects-bio {
     text-align: center;
-    margin: 1rem 1rem;
+    margin: 1rem;
 }
 
 .button {
     --x: 50%;
     --y: 50%;
+
     padding: 0.5em 1em;
     color: #202020;
     cursor: pointer;
@@ -195,6 +199,7 @@ a.no-opacity:hover {
     opacity: 1;
 }
 
+/* stylelint-disable selector-class-pattern -- third-party react-collapsible class names */
 .Collapsible {
     border-left: 2.5px solid var(--text-title);
     padding-left: 15px;
@@ -225,7 +230,7 @@ h2.section-title {
 }
 
 .entry {
-    padding: 0 0 1rem 0;
+    padding: 0 0 1rem;
 }
 
 div.tech,
@@ -260,7 +265,7 @@ div.item {
     margin-bottom: -15px;
     width: 0.6rem;
     height: 0.6rem;
-    background-color: white;
+    background-color: #fff;
     border-radius: 50%;
     border: 0.1rem solid var(--color-b);
 }
@@ -278,7 +283,7 @@ h5.section-redirect {
 }
 
 h4 {
-    margin: 0 0 0.3rem 0;
+    margin: 0 0 0.3rem;
 }
 
 .Collapsible__trigger {
@@ -286,9 +291,12 @@ h4 {
     font-weight: bold;
     color: var(--text-normal);
 }
+/* stylelint-enable selector-class-pattern */
 
 .gatsby-image-wrapper [data-main-image] {
+    /* stylelint-disable declaration-no-important -- override Gatsby image plugin defaults */
     transition: none !important;
     will-change: unset !important;
     opacity: 1 !important;
+    /* stylelint-enable declaration-no-important */
 }

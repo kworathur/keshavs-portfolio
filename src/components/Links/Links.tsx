@@ -1,8 +1,7 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import { Link } from "gatsby";
 import Toggle from "../Toggle/Toggle";
 import * as styles from "./Links.module.scss";
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import {ThemeToggler} from 'gatsby-plugin-dark-mode';
 
 
@@ -12,8 +11,7 @@ export enum Locations {
 }
 
 export const Destinations = [
-    { name: "projects", path: "/projects", external: false },
-    { name: "resume", path: "https://kworathur-portfolio.s3.amazonaws.com/kw_resume_portfolio.pdf", external: true },
+    { name: "resume", path: "https://uploads.kworathur.com/keshav_worathur_resume.pdf", external: true },
 ];
 
 interface InnerLinksProps {
@@ -36,10 +34,7 @@ const InnerLinks = (props: InnerLinksProps): ReactElement => {
     return (
 
             <ThemeToggler>
-                            {({ theme, toggleTheme }: ThemeTogglerProps) => {
-                                console.log(`Display site with theme "${theme}"`)
-                                const isDarkMode = theme === 'dark';
-                                return (
+                            {({ theme, toggleTheme }: ThemeTogglerProps) =>  (
                                        <div className={styles[`${prefix}Links`]}>
                                             <Link className={styles.headerLink} to={"/"}><h1 className={styles.logo}>kW</h1></Link>
                                             <div className={styles.linksAndLights}>
@@ -47,7 +42,7 @@ const InnerLinks = (props: InnerLinksProps): ReactElement => {
                                                     return d.external ? (
                                                         <a
                                                             key={index}
-                                                            className={styles[`${prefix}Link`]}
+                                                            className={`${styles[`${prefix}Link`]} ${styles.navLink}`}
                                                             href={d.path}
                                                             target="_blank"
                                                             rel="noreferrer"
@@ -57,19 +52,18 @@ const InnerLinks = (props: InnerLinksProps): ReactElement => {
                                                     ) : (
                                                         <Link
                                                             key={index}
-                                                            className={styles[`${prefix}Link`]}
+                                                            className={`${styles[`${prefix}Link`]} ${styles.navLink}`}
                                                             to={d.path}
                                                         >
                                                             {d.name}
                                                         </Link>
                                                     );
                                             })}
-                                            {location !== Locations.HOMEPAGE && <br />}
-                                        </div>
                                         <Toggle location={location} theme={theme} toggleTheme={toggleTheme}/>
+                                            </div>
                                         </div>
                                 )
-                            }}
+                            }
             </ThemeToggler>
 
     );
