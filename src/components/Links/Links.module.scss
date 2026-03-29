@@ -70,15 +70,6 @@
     display: flex;
 }
 
-.darkLogo {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  .lightLogo {
-    display: none;
-  }
-  .darkLogo {
-    display: block;
-  }
+.logo {
+    font-family: 'Albertus var';
 }

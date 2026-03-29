@@ -11,7 +11,9 @@ export enum Locations {
     POSTS,
 }
 
-export const Destinations = [ 
+export const Destinations = [
+    { name: "projects", path: "/projects", external: false },
+    { name: "resume", path: "https://kworathur-portfolio.s3.amazonaws.com/kw_resume_portfolio.pdf", external: true },
 ];
 
 interface InnerLinksProps {
@@ -39,16 +41,24 @@ const InnerLinks = (props: InnerLinksProps): ReactElement => {
                                 const isDarkMode = theme === 'dark';
                                 return (
                                        <div className={styles[`${prefix}Links`]}>
-                                            <Link className={styles.headerLink} to={"/"}>          
-                                            {isDarkMode ? <StaticImage loading="eager" width={128} height={128} src='../../../content/assets/logoDark.svg' alt='Keshav Worathur' />   : <StaticImage loading="eager" width={128} height={128} src='../../../content/assets/logo.svg' alt='Keshav Worathur' />}
-                                        </Link>
-                                        <div className={styles.linksAndLights}>
+                                            <Link className={styles.headerLink} to={"/"}><h1 className={styles.logo}>kW</h1></Link>
+                                            <div className={styles.linksAndLights}>
                                             {Destinations.map((d, index) => {
-                                                    return (
+                                                    return d.external ? (
+                                                        <a
+                                                            key={index}
+                                                            className={styles[`${prefix}Link`]}
+                                                            href={d.path}
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                        >
+                                                            {d.name}
+                                                        </a>
+                                                    ) : (
                                                         <Link
                                                             key={index}
                                                             className={styles[`${prefix}Link`]}
-                                                            to={`/${d.name}`}
+                                                            to={d.path}
                                                         >
                                                             {d.name}
                                                         </Link>
