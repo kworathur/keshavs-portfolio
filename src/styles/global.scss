@@ -3,6 +3,14 @@
 @import "Dark.scss";
 @import "Light.scss";
 
+@font-face {
+    font-family: 'Albertus var';
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+    src: url(/fonts/AlbertusMTStd.woff2) format("woff2");
+}
+
 * {
     box-sizing: border-box;
 }
@@ -15,8 +23,8 @@ body.light {
     --background: #{$light-bg};
     --text-normal: #{$light-fg1}; // same as light-fg!
     --text-title: #{$light-fg0};
-    --text-link: #{$light-purple};
-    --text-link-hover: #{$light-purple2};
+    --text-link: #{$light-fg1};
+    --text-link-hover: #{$light-fg0};
     --text-background: #{$light-bg1};
     --code: #{$light-blue};
     --code-background: #{$light-bg2};
@@ -31,8 +39,8 @@ body.dark {
     --background: #{$dark-bg};
     --text-normal: #{$dark-fg1}; // same as dark-fg!
     --text-title: #{$dark-fg0};
-    --text-link: #{$dark-yellow};
-    --text-link-hover: #{$dark-yellow2};
+    --text-link: #{$dark-fg1};
+    --text-link-hover: #{$dark-fg0};
     --text-background: #{$dark-bg1};
     --code: #{$dark-green2};
     --code-background: #{$dark-bg2};
