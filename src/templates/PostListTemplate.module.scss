@@ -1,13 +1,12 @@
 // On a small-screen, default to a single column display
 .posts {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    flex-flow: column wrap;
     gap: 2rem;
 }
 
 // On a large-screen, display in a grid
-@media only screen and (min-width: 954px) {
+@media only screen and (width >= 954px) {
     .posts {
         display: grid;
         grid-template-columns: 33% 33% 33%;

@@ -1,17 +1,13 @@
 import React, { ReactElement } from "react";
 import { rhythm } from "../../utils/typography";
 
-import { UNIVERSITY_YEAR_AS_STRING } from "../../data/Constants";
-import { StaticImage } from "gatsby-plugin-image";
-
-import * as styles from './Intro.module.scss'
 
 const Intro = (): ReactElement => {
 
     const resumeLink = (
         <a
             target="_blank"
-            href="https://kworathur-portfolio.s3.amazonaws.com/kw_resume_portfolio.pdf" // TODO: Modify permissions for private access with access keys
+            href="https://uploads.kworathur.com/keshav_worathur_resume.pdf"
             rel="noreferrer"
         >
             here

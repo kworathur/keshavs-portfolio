@@ -11,10 +11,11 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "lint:css": "stylelint \"src/**/*.{css,scss}\"",
+    "lint:css:fix": "stylelint \"src/**/*.{css,scss}\" --fix"
   },
   "dependencies": {
-    "@fontsource-variable/montserrat": "^5.2.6",
     "@fontsource/montserrat": "^4.5.14",
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/free-brands-svg-icons": "^7.0.0",
@@ -48,7 +49,6 @@
     "react-collapsible": "^2.10.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-pill": "^3.0.1",
     "react-typography": "^0.16.23",
     "sass": "^1.62.1",
     "typescript": "^5.0.4",
@@ -58,6 +58,8 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.11",
-    "gatsby-plugin-dark-mode": "^1.1.2"
+    "gatsby-plugin-dark-mode": "^1.1.2",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard-scss": "^17.0.0"
   }
 }

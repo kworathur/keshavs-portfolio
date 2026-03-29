@@ -17,11 +17,9 @@
 
 
 .knob {
-
     height: 1.2em;
     width: 1.2em;
     border-radius: 50%;
-    
     font-size: 1.2em;
     display: inline-block;
     background-image: radial-gradient(
@@ -47,6 +45,7 @@
     0%, 100% {
         top: -1.5em;
     }
+
     50% {
         top: 0;
     }

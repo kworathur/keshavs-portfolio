@@ -26,7 +26,10 @@ const Extracurriculars = (): ReactElement => {
                     const character = ``;
                     const triggerTitle = (
                         <>
-                            <div className="item"></div>
+                            <input type="checkbox" id="plus-toggle" className="plus-toggle" hidden />
+                            <label htmlFor="plus-toggle" className="plus-button" aria-label="Toggle expand">
+                            <span className="plus-icon" aria-hidden="true"></span>
+                            </label>
                             <h3 className="entry-title">
                                 {ec.position} @ <i>{ec.organization}</i>{" "}
                                 {character}

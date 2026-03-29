@@ -1,8 +1,7 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import { Link } from "gatsby";
 import Toggle from "../Toggle/Toggle";
 import * as styles from "./Links.module.scss";
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import {ThemeToggler} from 'gatsby-plugin-dark-mode';
 
 
@@ -11,7 +10,8 @@ export enum Locations {
     POSTS,
 }
 
-export const Destinations = [ 
+export const Destinations = [
+    { name: "resume", path: "https://uploads.kworathur.com/keshav_worathur_resume.pdf", external: true },
 ];
 
 interface InnerLinksProps {
@@ -34,32 +34,36 @@ const InnerLinks = (props: InnerLinksProps): ReactElement => {
     return (
 
             <ThemeToggler>
-                            {({ theme, toggleTheme }: ThemeTogglerProps) => {
-                                console.log(`Display site with theme "${theme}"`)
-                                const isDarkMode = theme === 'dark';
-                                return (
+                            {({ theme, toggleTheme }: ThemeTogglerProps) =>  (
                                        <div className={styles[`${prefix}Links`]}>
-                                            <Link className={styles.headerLink} to={"/"}>          
-                                            {isDarkMode ? <StaticImage loading="eager" width={128} height={128} src='../../../content/assets/logoDark.svg' alt='Keshav Worathur' />   : <StaticImage loading="eager" width={128} height={128} src='../../../content/assets/logo.svg' alt='Keshav Worathur' />}
-                                        </Link>
-                                        <div className={styles.linksAndLights}>
+                                            <Link className={styles.headerLink} to={"/"}><h1 className={styles.logo}>kW</h1></Link>
+                                            <div className={styles.linksAndLights}>
                                             {Destinations.map((d, index) => {
-                                                    return (
+                                                    return d.external ? (
+                                                        <a
+                                                            key={index}
+                                                            className={`${styles[`${prefix}Link`]} ${styles.navLink}`}
+                                                            href={d.path}
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                        >
+                                                            {d.name}
+                                                        </a>
+                                                    ) : (
                                                         <Link
                                                             key={index}
-                                                            className={styles[`${prefix}Link`]}
-                                                            to={`/${d.name}`}
+                                                            className={`${styles[`${prefix}Link`]} ${styles.navLink}`}
+                                                            to={d.path}
                                                         >
                                                             {d.name}
                                                         </Link>
                                                     );
                                             })}
-                                            {location !== Locations.HOMEPAGE && <br />}
-                                        </div>
                                         <Toggle location={location} theme={theme} toggleTheme={toggleTheme}/>
+                                            </div>
                                         </div>
                                 )
-                            }}
+                            }
             </ThemeToggler>
 
     );
