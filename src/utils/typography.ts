@@ -6,6 +6,8 @@ const typography = new Typography({
   baseLineHeight: 1.666,
   headerFontFamily: ['Albertus var'],
   bodyFontFamily: ['Arial', 'sans-serif'],
+  headerColor: "var(--text-title)",
+  bodyColor: "var(--text-normal)",
   overrideStyles: ({ rhythm }, options) => ({
     a: {
       color: "var(--text-link)",
