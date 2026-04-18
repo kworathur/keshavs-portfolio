@@ -6,13 +6,13 @@ module.exports = {
         title: "kworathur.com",
         author: {
             name: "Keshav Worathur",
-            summary: `an aspiring data engineer completing his master's at the Georgia Institute of Technology in Atlanta, GA.`,
+            summary: `an aspiring software engineer completing his master's at the Georgia Institute of Technology in Atlanta, GA.`,
         },
         description:
             "Keshav Worathur's developer portfolio.",
         siteUrl: "https://kworathur.com",
         social: {
-            twitter: "kworathur",
+            linkedin: "kworathur",
         },
     },
   trailingSlash: `never`,
@@ -69,63 +69,6 @@ module.exports = {
         },
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
-        {
-            resolve: `gatsby-plugin-feed`,
-            options: {
-                query: `{
-                    site {
-                        siteMetadata {
-                            title
-                            description
-                            siteUrl
-                            site_url: siteUrl
-                        }
-                    }
-                }`,
-                feeds: [
-                    {
-                        serialize: ({ query: { site, allMarkdownRemark } }) => {
-                            return allMarkdownRemark.nodes.map(node => {
-                                return Object.assign({}, node.frontmatter, {
-                                    description: node.excerpt,
-                                    date: node.frontmatter.date,
-                                    url:
-                                        site.siteMetadata.siteUrl +
-                                        node.fields.slug,
-                                    guid:
-                                        site.siteMetadata.siteUrl +
-                                        node.fields.slug,
-                                    custom_elements: [
-                                        { "content:encoded": node.html },
-                                    ],
-                                });
-                            });
-                        },
-                        query: `
-                        {
-                            allMarkdownRemark(
-                                sort: { order: DESC, fields: [frontmatter___date] },
-                            ) {
-                                nodes {
-                                    excerpt
-                                    html
-                                    fields {
-                                        slug
-                                    }
-                                    frontmatter {
-                                        title
-                                        date
-                                    }
-                                }
-                            }
-                        }`,
-                        output: "/rss.xml",
-                        title: "Keshav's Blog",
-                        match: "^/blog/",
-                    },
-                ],
-            },
-        },
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
