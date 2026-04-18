@@ -16,9 +16,7 @@ const Intro = (): ReactElement => {
 
     const bio1 = (
         <p className="redirects-bio">
-            Hi there! {"I'm"} Keshav, a passionate Master's student diving deeper into data engineering and computing systems at Georgia Tech. 
-            
-            Welcome to my interactive resume! To learn more about my skills and experience, please click on the resume sections below, or download a PDF version {resumeLink}. 
+            Site under construction 🚧
         </p>
     );
 
