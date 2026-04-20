@@ -1,6 +1,16 @@
 .title {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--text-background);
-    border-radius: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--text-background);
+  border-radius: 8px;
+}
+
+.post h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Arial';
 }

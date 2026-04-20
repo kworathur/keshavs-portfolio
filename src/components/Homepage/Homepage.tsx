@@ -1,29 +1,18 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement } from 'react';
 
-import SEO from '../SEO/SEO'
-import Links, { Locations } from "../Links/Links";
+import SEO from '../SEO/SEO';
 
-
-
-import Intro from "../Intro/Intro";
-import Footer from "../Footer/Footer"
-
+import Intro from '../Intro/Intro';
+import Format from '../Format/Format';
 
 const Homepage: React.FC = (): ReactElement => {
-
-    return (
-        <>
-   
-            <Links location={Locations.HOMEPAGE} />
-            <SEO title="Home" />
-            <Intro />
-            <div className="resume">
-               
-                <Footer />
-        
-            </div>
-        </>
-    );
+  return (
+    <Format title={'Home'}>
+      <SEO title="Home" />
+      <Intro />
+      <div className="resume"></div>
+    </Format>
+  );
 };
 
 export default Homepage;

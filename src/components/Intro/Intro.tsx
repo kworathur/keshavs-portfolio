@@ -28,7 +28,7 @@ const Intro = (): ReactElement => {
         </p>
         <p>
           I'd love to connect on Linkedin! Or if you want, you can just send me
-          music recommendations :&rpar;
+          music recommendations :&#x29;
         </p>
       </div>
       <div className={styles['intro']}></div>
