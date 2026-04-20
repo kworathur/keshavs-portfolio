@@ -42,8 +42,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // Get data: post objects, number of posts to render within each template, the template itself to create pages
     const posts = response.data.allMarkdownRemark.edges;
 
-    // Create blog content, design content, and project content
-    createPagesByType("projects", posts, createPage);
+    // Create blog content
+    createPagesByType("blog", posts, createPage);
 };
 
 /**

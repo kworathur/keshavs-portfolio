@@ -21,7 +21,6 @@
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.0",
-    "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "gatsby": "^5.16.1",
@@ -57,6 +56,7 @@
     "typography-theme-vue": "^0.1.0"
   },
   "devDependencies": {
+    "@types/node": "^25.6.0",
     "@types/react-helmet": "^6.1.11",
     "@types/typography": "^0.16.9",
     "gatsby-plugin-dark-mode": "^1.1.2",
