@@ -1,89 +1,87 @@
 .homepageWrapper {
-    margin: 1rem 0;
+  margin: 1rem 0;
 
-    // Align nav-bar in a wrap-able row on homepage
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  // Align nav-bar in a wrap-able row on homepage
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .homepageLinks {
-    width: 100%;
-    max-width: 62.475rem;
-    padding: 1rem 2rem;
-    margin-right: auto;
-    margin-left: auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-
+  width: 100%;
+  max-width: 62.475rem;
+  padding: 1rem 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
 .Links {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 60rem;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 60rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem 2rem;
 }
 
 .Title {
-    font-size: clamp(1em, 5vw, 3em);
-    padding: 0 0 0.25em;
-    line-height: 1.5;
-    color: var(--text-title);
+  font-size: clamp(1em, 5vw, 3em);
+  padding: 0 0 0.25em;
+  line-height: 1.5;
+  color: var(--text-title);
 }
 
 .homepageTitle {
-    padding: 0 1em;
-    line-height: 1.5;
-    color: var(--text-title);
-    text-align: center;
-    display: inline-block;
+  padding: 0 1em;
+  line-height: 1.5;
+  color: var(--text-title);
+  text-align: center;
+  display: inline-block;
 }
 
 .Link,
 .homepageLink {
-    text-decoration: none;
-    box-shadow: none;
-    color: var(--text-title);
-    margin: 0 0.5em 0 0;
+  text-decoration: none;
+  box-shadow: none;
+  color: var(--text-title);
+  margin: 0 0.5em 0 0;
 }
 
 .headerLink {
-    text-decoration: none;
-    box-shadow: none;
-    color: var(--text-title);
-    margin: 0;
-    display: flex;
-    align-items: center;
+  text-decoration: none;
+  box-shadow: none;
+  color: var(--text-title);
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .Title:hover,
 .homepageTitle:hover,
 .Link:hover,
 .homepageLink:hover {
-    transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .linksAndLights {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  line-height: 1;
 }
 
 .logo {
-    margin: 0;
-    line-height: 1;
-    font-family: 'Albertus var', serif;
+  margin: 0;
+  line-height: 1;
+  font-family: 'Albertus var', serif;
 }
 
 .navLink {
-    font-family: 'Albertus var', serif;
+  font-family: 'Albertus var', serif;
 }
