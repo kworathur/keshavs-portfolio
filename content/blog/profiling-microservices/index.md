@@ -9,27 +9,29 @@ tags: ['Distributed Systems']
 
 The tech industry is working hard to make datacenters - the windowless buildings powering every online purchase, post, and prompt - more energy efficient. My team felt inspired to do our part for our final course project in **CS8803: Datacenter Networks and Systems** at Georgia Tech. Because [launching a datacenter into space](https://www.npr.org/2026/04/03/nx-s1-5718416/ai-data-centers-in-space-spacex-elon-musk) or [dropping one in the ocean](https://news.microsoft.com/source/features/sustainability/project-natick-underwater-datacenter/) was out of scope for the course, we chose to focus on a more practical approach to achieving energy efficiency: clever _load balancing algorithms_ that distribute work amongst thousands of servers.
 
-My main contribution was simulating thousands of users making requests to a hotel resrvation application and measuring its power consumption and latency (think: time it takes to receive a confirmation after clicking "book"). What I didn't know going into this project is that there are a lot of pitfalls to avoid if you want to make your results _reproducible_, meaning that anyone else can easily re-run your experiment and get the same results at any point in the future.
+My contribution was simulating thousands of users making requests to a hotel reservation application and measuring its power consumption and latency (think: time it takes to receive a confirmation after clicking "book" on AirBnB). What I didn't know going into this project is that there are a lot of pitfalls to avoid if you want to make your results _reproducible_, meaning that anyone else can easily re-run your experiment and get the same results at any point in the future.
 
-I believe the tips in this post are relevant not only to researchers, but anyone who is developing an application and wants to see how it will perform when thousands of users are using it. Being able to make claims like "my application takes under 5ms to load for 99% of users" of users requires convincing and repeatable results.
+I believe the tips in this post are helpful not only to researchers, but anyone who is developing an application and wants to see how it will perform when thousands of users are using it. Being able to make claims like "my application takes under 5ms to load for 99% of users" of users requires convincing and reproducible results.
 
 # How It All Started
 
 ![big if true: the one figure in our 6-page report that caught our professor's eye](the_root_of_evil.png)
 
-The figure you're seeing above is what led me down a long rabbithole of trying (and failing) to achieve the same results again. Don't worry, all you need to understand from this figure is that blue line on the right consistently uses less power than orange line but somehow has very similar latency to orange line on the left, even under high load.
+The figure you're seeing above is what led me down a long rabbithole of trying (and failing) to recreate its findings. Simply put, the blue and orange lines in this plot represent different _frequency governors_. These governors act just like a speed limiter in a car: they intentionally limit the CPU clock rate (top speed in our analogy) to optimize for power utilization (fuel economy/safety in our analogy). The plot above shows that the blue governor uses consistently less power than the orange governor while also matching the orange governor in terms of latency (i.e. how fast users can book hotels) at high loads.
 
-Admittedly, I didn't know enough about how servers consume power to flag this discovery as potentially interesting. But our Professor did, and they encouraged us to see if we could reproduce the results, because this result could be _very_ promising if true.
+Admittedly, I didn't know enough about frequency governors at the time to flag this discovery as potentially interesting. In effect, this discovery would suggest that we can signifcantly reduce the power consumption of certain applications without negatively impacting their performance. Crucially, we don't have to sacrifice on _p99 latency_ (the dashed lines in the left plot), which is a metric datacenter operators tend to care about most. Given the recent concerns about datacenter's rising power consumption, it is no surprise our professor singled out this plot in our report and encouraged us to dig deeper.
 
-# Some Background
+# Tips for Reproducible Systems Research
 
-I did not know much about what goes into constructing datacenter before taking this course, but came out
-
-https://github.com/kworathur/DeathStarBench/tree/6ecb09706140f8730b5385c08f1386c654c3c526/hotelReservation
+The tips I've compiled in this guide are based on my experience profiling a gRPC-based hotel reservation service, part of the larger [DeathStarBench](https://github.com/kworathur/DeathStarBench/tree/) open-source cloud microservice benchmarking suite. In short, if you want to make sure your results are easil
 
 In particular, I want to measure the p99 latency when the server is at the point of saturation, which you can imagine would become important if a bunch of people were searching for hotels at once.
 
 ## 1. Establish Baselines
+
+Establishing baselines is important when measuring the performance of an algorithm because they help us quantify how well an algorithm performs. Baselines matter for reproducibility because they give us a "checkpoint" that we can always rely on to sanity check our results while conducting experiments. In general, a baseline can be a simplified version of the algorithm you are experimenting with, or an algorithm that is widely adopted and has multiple open source implementations. Since I'm comparing algorithms that limit a CPU's clock rate, a natural baseline would be an algorithm that that lets the CPU use its maximum clock rate without any imposed limits.
+
+Before I can obtain measurements for my baseline, there is one small problem: the existing hotel reservation application is deployed using Docker, which makes deployment of the application straightforward but also makes it difficult to collect accurate measurements. Since I am measuring latency of requests, my measurements could be inflated by the latency of host networking in Docker. Further, I want to issue enough requests so that the server reaches _saturation_ (where all of its CPU resources are fully utilized), and using Docker could limit how much I can push the server.
 
 Show docker vs. bare processes and justify why you opted for bare processes
 
@@ -58,7 +60,7 @@ These results give us a good "upper limit" on the latency figures we should get.
 [TODO: add wrk2 output for bare processes]
 (double check this figure)
 
-## 2. Start out by Profiling a Single Request Path
+## 2. Start out by Measuring a Single Code Branch
 
 This tip is a little more subtle, but I'll try my best to explain it here.
 
