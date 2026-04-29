@@ -9,13 +9,13 @@ const Intro = (): ReactElement => {
         marginLeft: `auto`,
         marginRight: `auto`,
         maxWidth: rhythm(37.5),
-        padding: '1rem 2rem',
         display: 'flex',
       }}
     >
       <div className={styles['intro']}>
         <div className={styles['tagline']}>
-          <h1>KESHAV</h1> <div className={styles['divider']}></div>{' '}
+          <h1 className="section-title">Keshav</h1>{' '}
+          <div className={styles['divider']}></div>{' '}
           <span>software engineer</span>
         </div>
         <p>
@@ -23,7 +23,6 @@ const Intro = (): ReactElement => {
           with an interest in interpretable ML models and production ML systems.
         </p>
       </div>
-      <div className={styles['intro']}></div>
     </div>
   );
 };
