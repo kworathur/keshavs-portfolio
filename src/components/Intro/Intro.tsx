@@ -22,14 +22,6 @@ const Intro = (): ReactElement => {
           Welcome to my website! I am a software engineer based in Atlanta, GA
           with an interest in interpretable ML models and production ML systems.
         </p>
-        <p>
-          When I'm not building, you can probably find me swimming, practicing
-          my public speaking skills, or jamming out to rock music.
-        </p>
-        <p>
-          I'd love to connect on Linkedin! Or if you want, you can just send me
-          music recommendations :&#x29;
-        </p>
       </div>
       <div className={styles['intro']}></div>
     </div>

@@ -9,7 +9,7 @@ tags: ['Distributed Systems']
 
 The tech industry is working hard to make datacenters - the windowless buildings powering every online purchase, post, and prompt - more energy efficient. My team felt inspired to do our part for our final course project in **CS8803: Datacenter Networks and Systems** at Georgia Tech. Because [launching a datacenter into space](https://www.npr.org/2026/04/03/nx-s1-5718416/ai-data-centers-in-space-spacex-elon-musk) or [dropping one in the ocean](https://news.microsoft.com/source/features/sustainability/project-natick-underwater-datacenter/) was out of scope for the course, we chose to focus on a more practical approach to achieving energy efficiency: clever _load balancing algorithms_ that distribute work amongst thousands of servers.
 
-My contribution was simulating thousands of users making requests to a hotel reservation application and measuring its power consumption and latency (think: time it takes to receive a confirmation after clicking "book" on AirBnB). What I didn't know going into this project is that there are a lot of pitfalls to avoid if you want to make your results _reproducible_, meaning that anyone else can easily re-run your experiment and get the same results at any point in the future.
+My contribution was simulating thousands of users making requests to a hotel reservation application and measuring its power consumption and latency (think: time it takes to receive a confirmation after clicking "book" on AirBnB). What I didn't know going into this project is that there are a lot of pitfalls to avoid if you want to make your results _reproducible_, meaning that anyone else can easily re-run your experiment and get the same results in the future.
 
 I believe the tips in this post are helpful not only to researchers, but anyone who is developing an application and wants to see how it will perform when thousands of users are using it. Being able to make claims like "my application takes under 5ms to load for 99% of users" of users requires convincing and reproducible results.
 
@@ -23,42 +23,17 @@ Admittedly, I didn't know enough about frequency governors at the time to flag t
 
 # Tips for Reproducible Systems Research
 
-The tips I've compiled in this guide are based on my experience profiling a gRPC-based hotel reservation service, part of the larger [DeathStarBench](https://github.com/kworathur/DeathStarBench/tree/) open-source cloud microservice benchmarking suite. In short, if you want to make sure your results are easil
-
-In particular, I want to measure the p99 latency when the server is at the point of saturation, which you can imagine would become important if a bunch of people were searching for hotels at once.
+The tips I've compiled in this guide are based on my experience profiling a gRPC-based hotel reservation service, part of the larger [DeathStarBench](https://github.com/kworathur/DeathStarBench/tree/) open-source cloud microservice benchmarking suite. In particular, I want to measure the p99 latency when the server is at the point of saturation, meaning all of its CPU resources are fully utilized. In the real world, this could happen when people are trying to book
 
 ## 1. Establish Baselines
 
 Establishing baselines is important when measuring the performance of an algorithm because they help us quantify how well an algorithm performs. Baselines matter for reproducibility because they give us a "checkpoint" that we can always rely on to sanity check our results while conducting experiments. In general, a baseline can be a simplified version of the algorithm you are experimenting with, or an algorithm that is widely adopted and has multiple open source implementations. Since I'm comparing algorithms that limit a CPU's clock rate, a natural baseline would be an algorithm that that lets the CPU use its maximum clock rate without any imposed limits.
 
-Before I can obtain measurements for my baseline, there is one small problem: the existing hotel reservation application is deployed using Docker, which makes deployment of the application straightforward but also makes it difficult to collect accurate measurements. Since I am measuring latency of requests, my measurements could be inflated by the latency of host networking in Docker. Further, I want to issue enough requests so that the server reaches _saturation_ (where all of its CPU resources are fully utilized), and using Docker could limit how much I can push the server.
+Before I can obtain measurements for my baseline, there is one small problem: the existing hotel reservation application is deployed using Docker, which makes deployment of the application straightforward but also makes it difficult to collect accurate measurements. Since I am measuring latency of requests, my measurements could be inflated by the latency of host networking in Docker. Further, I want to issue enough requests so that the server reaches _saturation_, and using Docker might limit how much I can push the server.
 
-Show docker vs. bare processes and justify why you opted for bare processes
+To be sure, I used the `wrk2` HTTP load testing tool to measure request latency for requests sent to a containerized version of the application compared to a version that does not run in containers.
 
-Show docker latency vs bare process latency
-
-```txt
-Test Results @ http://10.10.3.2:5000
-  Thread Stats   Avg      Stdev     99%   +/- Stdev
-    Latency   124.86ms  146.21ms 580.09ms   83.60%
-    Req/Sec    49.16     10.66    73.00     71.79%
-  Latency Distribution (HdrHistogram - Recorded Latency)
- 50.000%   78.97ms
- 75.000%  211.71ms
- 90.000%  328.19ms
- 99.000%  580.09ms
- 99.900%  775.17ms
- 99.990%  844.80ms
- 99.999%  844.80ms
-100.000%  844.80ms
-```
-
-(maybe make this a bar chart)
-
-These results give us a good "upper limit" on the latency figures we should get. Anything larger than these numbers, and we can be sure that something might be wrong with our experimental setup.
-
-[TODO: add wrk2 output for bare processes]
-(double check this figure)
+These results from docker are already helpful because they give us a good "upper limit" on the latency figures we should get. Anything larger than these numbers, and we can be sure that something might be wrong with our experimental setup.
 
 ## 2. Start out by Measuring a Single Code Branch
 
