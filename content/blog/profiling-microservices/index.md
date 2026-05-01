@@ -59,7 +59,7 @@ There's our p99 latency in the fifth row from the bottom! It looks like 99% perc
 
 ## 2. Start out by Measuring a Single Path in Code
 
-With our baseline established, we can start collecting measurements for the _real experiments_. There is just one catch - our hotel reservation application executes multiple paths in code before returning a result. This can make debugging abnormal latency results fairly challenging, and it's why I recommend fully experimenting with one code path first before expanding experiments to the rest of the application.
+With our baseline established, we can start collecting measurements for the _real experiments_. There is just one catch - our hotel reservation application executes multiple paths in code before returning a result. This can make debugging abnormal latency results fairly challenging, and it's why I recommend fully experimenting with one code path first before expanding experiments to the rest of the application
 
 To illustrate my point more clearly, we can use an observability platform called [Jaeger](https://www.jaegertracing.io/) to visualize the code paths that are exercised for a search request. Jaeger allows us to trace the path a request takes through code in a way that print statements can't; using Jaeger, we can trace applications where a request may be passed through multiple containers (as is the case here) or multiple virtual machines scattered across a datacenter.
 
@@ -79,19 +79,52 @@ Lastly, Jaeger gives us a timeline view of requests, that can help us understand
 
 ![Trace timeline view in Jaeger](./jaeger_trace_viz.png)
 
-At this point, I could start to get a sense of what produced the elusive result in the beginning of the blog post.
+At this point, I could start to get a sense of what produced the elusive result in the beginning of the blog post. If you look at the golden and purple colored bars in the timeline view, you can see how much time the application is spending on fetching cached results. In particular, to fetch the hotel prices (gold bar) the application is spending significantly more time than fetching cached profile and reservation results (tiny purple bars). What this suggests is that either requests for hotel rates frequently incur cache misses (meaning the database has to be queried, significantly more time consuming), or that there is simply more rate data to fetch per request.
+
+I later discovered that when I ran experiments for one performance governor, the cache would be "warmed" by the requests I sent to the application and inadvertenly left warm for the second performance governor, which means the second governor may achieve lower latencies in practice due to operating almost entirely out of the cache.
 
 If I were to try running experiments again, here's what I would have done differently. I would comment out parts of the code so that I only see a chain of calls in my dependency graph, rather than the tree you see above. This is how you can make a similar change in the go server code. Furthermore, I would try to take the cache out of the picture entirely, or at least make sure that the cache is being cleared after every trial to facilitate a fair comparison between the performance governors.
 
 ## 3. Document Your Configs
 
-When your config lives in one-liner commands that gets buried in long slack threads, it makes you more prone to overlooking a misconfigured parameter and wasting a lot of time debugging results that don't make sense. For this reason, I recommend saving all of your config in a single file. Because I was using python for my testing scripts, it made sense to create a separate config.py file with _all_ of my experimental config in it:
+When your config lives in one-liner commands that get buried in long slack threads, it makes you more prone to overlooking a misconfigured parameter and wasting a lot of time debugging results that don't make sense. For this reason, I recommend saving all of your config in a single file. Because I was using python for my testing scripts, it made sense to create a separate config.py file with _all_ of my experimental config in it:
 
+```python
+#!/usr/bin/env python3
+import os
+from pathlib import Path
+
+
+# Default workload assignment and governor order.
+DEFAULT_TARGETS = ["hotels", "recommendations", "reservation", "user"]
+DEFAULT_GOVERNORS = ["performance", "schedutil"]
+
+# SSH configuration for connecting to experiment nodes.
+SSH_USER = os.environ.get("HOTEL_REMOTE_SSH_USER", "")
+SSH_KEY_PATH = os.path.expanduser(os.environ.get("HOTEL_REMOTE_SSH_KEY", ""))
+
+# Repository and artifact layout on the remote hosts.
+REPO_ROOT = Path(__file__).resolve().parents[2]
+REMOTE_REPO_ROOT = os.environ.get("HOTEL_REMOTE_REPO_ROOT", str(REPO_ROOT))
+REMOTE_SCRIPT = "hotelReservation/scripts/run_power_sweep.sh"
+
+# Experiment defaults.
+HOST_URL = os.environ.get("HOTEL_REMOTE_HOST_URL_TEMPLATE", "http://%h:5000")
+THREADS = 4
+CONNECTIONS = 128
+RATES_SPEC = "1000:20000:1000"
+WRK2_DURATION=30
+POWERSTAT_INTERVAL = 0.5
+POWERSTAT_SOURCE = "auto"
+SETTLE_SECONDS = 5
+
+# Result locations.
+RESULTS_ROOT = REPO_ROOT / "results" / "distributed_power_sweeps"
+LOCAL_OUTPUT_DIR = str(RESULTS_ROOT)
+REMOTE_OUTPUT_BASE = os.environ.get("HOTEL_REMOTE_OUTPUT_BASE", "")
 ```
 
-
-
-```
+Documenting my configuration helped me pinpoint a tricky timing bug. In the configuration above, you can see that we generate load for 30 seconds, however the powerstat tool I used to collect power measurements collects measurements over a minimum interval of 60 seconds. This lead to powerstat collecting some idle measurements, which acted to weight down the average power consumption of schedutil relative to performance.
 
 ## 4. Version Control is Your Friend
 
@@ -100,25 +133,3 @@ If you take away one tip from this guide, it's to commit changes to version cont
 ## Conclusion
 
 At the end of the day, the likely root cause is out-of-sync binaries used for testing. There was a commit that changed the search functionality to do a full scan of memcached rather than filter on in and out data. While seeming insignifcant, through a lot of trial and error I see that this change decreased power usage by 4W, which is supported by the fact that the CPU is doing more work.
-
-# Baby Steps
-
-Any time you want to see how a system does under load, it is good to start small.
-
-1. try issuing a very low number of requests to the service
-2. try limiting the types of requests you send to a single request. I chose to target the hotels functionality specifically because it has a larger fan-out and touches the database and cache on almost every request.
-
-While docker is a great tool for reproducing results, it adds overhead to the request latency due to its host networking that can make it difficult to push the server to its limits. Profiling an application that's been containerized also brings its own set of challenges.
-
-The client is the bottleneck
-
-```txt
-
-
-
-
-```
-
-Before I can obtain measurements for my baseline, there is one small problem: the existing hotel reservation application is deployed using Docker, which makes deployment of the application straightforward but also makes it difficult to collect accurate measurements. Since I am measuring latency of requests, my measurements could be inflated by the latency of host networking in Docker. Further, I want to issue enough requests so that the server reaches _saturation_, and using Docker might limit how much I can push the server.
-
-To be sure, I used the `wrk2` HTTP load testing tool to measure request latency for requests sent to a containerized version of the application compared to a version that does not run in containers.
